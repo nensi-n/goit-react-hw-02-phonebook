@@ -2,7 +2,7 @@ import React from "react";
 import "./App.css";
 import ContactForm from "./components/ContactForm/ContactForm";
 import ContactList from "./components/ContactList/ContactList";
-// import Container from "./components/Container/Container";
+import Container from "./components/Container/Container";
 import shortid from "shortid";
 import Filter from "./components/Filter/Filter";
 import contactFilter from "./utils/filter";
@@ -41,14 +41,16 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="App">
+      <Container>
+        <h1>Phonebook</h1>
         <ContactForm onSubmite={this.handleSubmiteForme} />
+        <h2>Contacts</h2>
         <Filter value={this.state.filter} onChange={this.handleChangeFilter} />
         <ContactList
           onDelete={this.removeContact}
           contacts={contactFilter(this.state.contacts, this.state.filter)}
         />
-      </div>
+      </Container>
     );
   }
 }

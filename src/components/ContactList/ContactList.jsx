@@ -1,6 +1,9 @@
+import T from "prop-types";
+import "../ContactList/ContactList.css";
+
 function ContactList({ contacts, onDelete }) {
   return (
-    <ul>
+    <ul className="contact-list">
       {contacts.map((contact) => (
         <li key={contact.id}>
           <p>Name: {contact.name}</p>
@@ -13,5 +16,16 @@ function ContactList({ contacts, onDelete }) {
     </ul>
   );
 }
+
+ContactList.propTypes = {
+  contacts: T.arrayOf(
+    T.shape({
+      id: T.string.isRequired,
+      name: T.string.isRequired,
+      number: T.string.isRequired,
+    })
+  ),
+  onDelete: T.func.isRequired,
+};
 
 export default ContactList;
